@@ -157,3 +157,18 @@ except:
     logger.critical("Завершаю программу...")  # locale
     time.sleep(5)
     sys.exit()
+    from flask import Flask
+import threading
+import os
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Бот работает!"
+
+def run():
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+
+threading.Thread(target=run).start()
+
